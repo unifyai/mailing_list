@@ -13,8 +13,7 @@ function subscribeCard() {
                     {/* add padding to button */}
                     <button onClick={sendSubscribe} className="btn btn-primary ml-2">Subscribe</button>
                 </div>
-                <p id="error" className="text-red-500"></p>
-                <p id="success" className="text-green-500"></p>
+                <p id="error" className="text-red-500"></p><p id="success" className="text-green-500"></p>
             </div>
         </div>
     )

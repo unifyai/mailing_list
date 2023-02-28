@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 function unsubscribeCard() {
     return(
@@ -13,8 +12,7 @@ function unsubscribeCard() {
                     <input id = "email" type="text" placeholder="Email" className="input input-bordered input-primary w-full max-w-xs" />
                     <button onClick={unsubscribeSend} className="btn btn-primary ml-2">Unsubscribe</button>
                 </div>
-                <p id="error" className="text-red-500"></p>
-                <p id="success" className="text-green-500"></p>
+                <p id="error" className="text-red-500"></p><p id="success" className="text-green-500"></p>
             </div>
         </div>
     )

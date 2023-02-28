@@ -1,38 +1,26 @@
-# Get NPM packages
-FROM node:14-alpine AS dependencies
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --only=production
+# Use an official Node.js runtime as a parent image
+FROM node:16-alpine
 
-# Rebuild the source code only when needed
-FROM node:14-alpine AS builder
+# Set the working directory to /app
 WORKDIR /app
-COPY prisma ./prisma
-COPY .env ./
-COPY tsconfig.json ./
-COPY . .
-COPY --from=dependencies /app/node_modules ./node_modules
+
+# Copy package.json and package-lock.json to the container
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
+
+# Copy the rest of the application code to the container
+COPY . .
+
+# Set environment variables
+ENV DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+
+# Build the Next.js app
 RUN npm run build
 
-# Production image, copy all the files and run next
-FROM node:14-alpine AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER nextjs
-
+# Expose the port that the app will listen on
 EXPOSE 3000
 
-ENV PORT 3000
-
+# Run the app using the start command defined in package.json
 CMD ["npm", "start"]
