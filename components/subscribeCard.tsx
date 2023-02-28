@@ -14,6 +14,7 @@ function subscribeCard() {
                     <button onClick={sendSubscribe} className="btn btn-primary ml-2">Subscribe</button>
                 </div>
                 <p id="error" className="text-red-500"></p>
+                <p id="success" className="text-green-500"></p>
             </div>
         </div>
     )
@@ -50,7 +51,7 @@ function sendSubscribe(){
         //if email is not in database
         else{
             //display success message
-            document.getElementById("error").innerHTML = "Success! You have been subscribed to our newsletter.";
+            document.getElementById("success").innerHTML = "Success! You have been subscribed to our newsletter.";
         }
     })
     .catch(err => {

@@ -14,6 +14,7 @@ function unsubscribeCard() {
                     <button onClick={unsubscribeSend} className="btn btn-primary ml-2">Unsubscribe</button>
                 </div>
                 <p id="error" className="text-red-500"></p>
+                <p id="success" className="text-green-500"></p>
             </div>
         </div>
     )
@@ -50,7 +51,7 @@ function unsubscribeSend(){
         //if email is in database
         else{
             //display success message
-            document.getElementById("error").innerHTML = "Success! You have been unsubscribed from our newsletter.";
+            document.getElementById("success").innerHTML = "Success! You have been unsubscribed from our newsletter.";
         }
     })
     .catch(err => {
