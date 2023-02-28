@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import subscribeCard from '../components/subscribeCard';
-import link from 'next/link';
+import prisma from '../lib/prisma';
 
 export default function Home() {
   return (
     <div>
       <Head>
-        <title>Ivy - Newsletter</title>
+        <title>Ivy Newsletter - Subsribe</title>
       </Head>
       {/* add subscribe card with padding aligned center */}/
       <div className="flex flex-col justify-center items-center">
@@ -18,7 +18,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center">
         <div className="w-100">
           {/* paragraph with link in the same line links to unsubscribe page*/}
-          <p className="text-center">Unsubscribe from our newsletter <a href="/unsubscribe" className="text-green-500">here</a></p>
+          <p className="text-center">Unsubscribe from our mailing list <a href="/unsubscribe" className="text-green-500">here.</a></p>
         </div>
       </div>
     </div> 
