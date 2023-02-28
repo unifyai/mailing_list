@@ -1,7 +1,8 @@
+import { subscriber } from "@prisma/client";
 import prisma from "../../lib/prisma";
 
 // create a function that takes an email as string and add it to the database
-export default async function subscribe(req, res) {
+export default async function subscribe(req: { body: { email: any; }; method: string; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): any; new(): any; }; }; json: (arg0: subscriber) => void; }) {
     const email = req.body.email;
 
     // check if the email is already in the database

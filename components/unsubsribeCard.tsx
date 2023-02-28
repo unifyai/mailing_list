@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import Image from "next/image";
 
 function unsubscribeCard() {
     return(
@@ -6,7 +6,7 @@ function unsubscribeCard() {
             <figure><img src="https://www.pngmart.com/files/11/Sad-Pepe-The-Frog-Transparent-Background.png" alt="Sad Pepe" /></figure>
             <div className="card-body">
                 <div className="">
-                    <h2 className="card-title">We're sad to see you go :(</h2>
+                    <h2 className="card-title">We are sad to see you go</h2>
                     <p>Feel free to join back at anytime!</p>
                 </div>
                 <div className="flex flex-row justify-start">
@@ -22,11 +22,14 @@ function unsubscribeCard() {
 
 //function that when button is clicked it will send a request to remove email from prisma database
 function unsubscribeSend(){
+    document.getElementById("success")!.innerHTML = "";
+    document.getElementById("error")!.innerHTML = "";
+
     //get email from input
-    var email = document.getElementById("email").value;
+    var email = (document.getElementById("email") as HTMLInputElement).value;
     
     if (email == "") {
-        document.getElementById("error").innerHTML = "Please enter an email";
+        document.getElementById("error")!.innerHTML = "Please enter an email";
         return;
     }
 
@@ -46,12 +49,12 @@ function unsubscribeSend(){
         //if email is not in database
         if(data.error){
             //display error message
-            document.getElementById("error").innerHTML = "This email is not subscribed to our newsletter.";
+            document.getElementById("error")!.innerHTML = "This email is not subscribed to our newsletter.";
         }
         //if email is in database
         else{
             //display success message
-            document.getElementById("success").innerHTML = "Success! You have been unsubscribed from our newsletter.";
+            document.getElementById("success")!.innerHTML = "Success! You have been unsubscribed from our newsletter.";
         }
     })
     .catch(err => {

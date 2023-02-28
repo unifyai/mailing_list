@@ -1,7 +1,8 @@
 import prisma from "@/lib/prisma";
+import { subscriber } from "@prisma/client";
 
 // create a function that takes an email string and removes it from the database
-export default async function unsubscribe(req, res) {
+export default async function unsubscribe(req: { body: { email: any; }; method: string; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): any; new(): any; }; }; json: (arg0: subscriber) => void; }) {
     const email = req.body.email;
     
     // check if the email is already in the database

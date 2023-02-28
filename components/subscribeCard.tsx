@@ -22,11 +22,13 @@ function subscribeCard() {
 
 //funciton that when button is clicked it will send a request to add email to database
 function sendSubscribe(){
+    document.getElementById("success")!.innerHTML = "";
+    document.getElementById("error")!.innerHTML = "";
+
     //get email from input
-    var email = document.getElementById("email").value;
-    
+    var email = (document.getElementById("email") as HTMLInputElement).value;
     if (email == "") {
-        document.getElementById("error").innerHTML = "Please enter an email";
+        document.getElementById("error")!.innerHTML = "Please enter an email";
         return;
     }
 
@@ -46,12 +48,12 @@ function sendSubscribe(){
         //if email is already in database
         if(data.error){
             //display error message
-            document.getElementById("error").innerHTML = "This email is already subscribed to our newsletter.";
+            document.getElementById("error")!.innerHTML = "This email is already subscribed to our newsletter.";
         }
         //if email is not in database
         else{
             //display success message
-            document.getElementById("success").innerHTML = "Success! You have been subscribed to our newsletter.";
+            document.getElementById("success")!.innerHTML = "Success! You have been subscribed to our newsletter.";
         }
     })
     .catch(err => {

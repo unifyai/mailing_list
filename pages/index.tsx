@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import subscribeCard from '../components/subscribeCard';
 import prisma from '../lib/prisma';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center">
         <div className="w-100">
           {/* paragraph with link in the same line links to unsubscribe page*/}
-          <p className="text-center">Unsubscribe from our mailing list <a href="/unsubscribe" className="text-green-500">here.</a></p>
+          <p className="text-center">Unsubscribe from our mailing list <Link href="/unsubscribe" className="text-green-500">here</Link></p>
         </div>
       </div>
     </div> 
