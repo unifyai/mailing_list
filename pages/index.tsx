@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Ivy Newsletter - Subsribe</title>
       </Head>
-      {/* add subscribe card with padding aligned center */}/
+      {/* add subscribe card with padding aligned center */}
       <div className="flex flex-col justify-center items-center">
         <div className="w-100">
           {subscribeCard()}
