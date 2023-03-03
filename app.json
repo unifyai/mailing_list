@@ -1,9 +1,9 @@
 {
-    "name": "ivy_mail",
+    "name": "mailing-list",
     "options":{
-        "memory": 128,
-        "cpu": 1,
-        "port": 3000,
-        "http2": false
+        "memory": "128",
+        "cpu": "1",
+        "port": "3000",
+        "http2": "false"
     }
 }
