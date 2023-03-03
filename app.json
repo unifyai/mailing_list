@@ -1,7 +1,6 @@
 {
     "name": "ivy_mail",
     "options":{
-        "allow_unauthenticated": true,
         "memory": 128,
         "cpu": 1,
         "port": 3000,
